@@ -1,0 +1,5 @@
+db-name = systemvet-app
+db_password = Pa$$w0rd2225091324
+db_username = systemvet
+db_host = systemvet-app.c1uqiyeq2r8l.us-east-2.rds.amazonaws.com
+db_port = 3306
