@@ -103,6 +103,24 @@ LOGGING = {
     },
 }
 
+
+# Configuração dos templates
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Adiciona o diretório global de templates
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -152,8 +170,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# Diretório para arquivos estáticos
+STATIC_URL = '/static/'
 
+# Diretórios onde o Django procura arquivos estáticos
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Pasta global de arquivos estáticos
+]
+
+# Diretório onde os arquivos estáticos serão coletados (para produção)
+STATIC_ROOT = BASE_DIR / "staticfiles"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

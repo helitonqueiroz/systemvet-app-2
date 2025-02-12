@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - SystemVet{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Dashboard</h1>
+
+<!-- Resumo Geral -->
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Clientes Cadastrados</h5>
+                <p class="card-text display-4">{{ total_clientes }}</p>
+                <a href="#" class="btn btn-light">Ver todos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Pets Cadastrados</h5>
+                <p class="card-text display-4">{{ total_pets }}</p>
+                <a href="#" class="btn btn-light">Ver todos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Consultas Realizadas</h5>
+                <p class="card-text display-4">{{ total_consultas }}</p>
+                <a href="#" class="btn btn-light">Agendar nova</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Financeiro -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Cobranças Pendentes</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for cobranca in cobrancas_pendentes %}
+                        <li class="list-group-item">{{ cobranca.descricao }} - R$ {{ cobranca.valor }} (Vence em {{ cobranca.data_vencimento }})</li>
+                    {% empty %}
+                        <li class="list-group-item">Nenhuma cobrança pendente.</li>
+                    {% endfor %}
+                </ul>
+                <a href="#" class="btn btn-primary mt-3">Ver todas as cobranças</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Receita Total do Mês</div>
+            <div class="card-body">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

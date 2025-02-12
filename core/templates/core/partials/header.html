@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">SystemVet</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'clientes:login' %}">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Financeiro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logs</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center">
+                {% if user.is_authenticated %}
+                    <span class="me-2">Olá, {{ user.nome_usuario }}</span>
+                    <a href="{% url 'clientes:logout' %}" class="btn btn-outline-danger">Sair</a>
+                {% else %}
+                    <a href="{% url 'clientes:login' %}" class="btn btn-outline-primary">Entrar</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
